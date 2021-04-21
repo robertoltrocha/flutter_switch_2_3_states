@@ -1,6 +1,7 @@
 name: flutter_switch_2_3_states
 description: Widget switch with 2 or 3 states
 version: 0.0.2
+author: Roberto Rocha<rocha_roberto@hotmail.com>
 homepage:
 
 environment:
