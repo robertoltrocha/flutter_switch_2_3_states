@@ -5,10 +5,10 @@ In this package you also have the freedom to configure the list of values that w
 The list of values is dynamic and returns the selected value without having to do the conversion.
 Example of the list of values:
 ```
-[false, true]
-[false, null, true]
-[0, 2,1]
-['no', '', 'yes']
+[false,true]
+[false,null,true]
+[0,2,1]
+['no','','yes']
 ```
 
 ## Getting Started
@@ -36,6 +36,7 @@ Example of the list of values:
 ```
 
 ##Demo
+
 ![exemple](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif?raw=true)
 
 ## Licence
