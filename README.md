@@ -1,5 +1,4 @@
 # switch 2 or 3 states
-
 An easy way to implement a switch with 2 or 3 states.
 In this package you also have the freedom to configure the list of values that will be used on the switch.<br/>
 
@@ -13,8 +12,6 @@ Example of the list of values:
 ```
 
 ## Getting Started
-
-
 ```
    WidgetSwitch1(
                 iconRight: Icons.check,
@@ -35,10 +32,8 @@ Example of the list of values:
                 },
               ),
 ```
-<br/>
 
 ## Demo
-<br/>
 ![Demo](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif)
 
 ## Licence
