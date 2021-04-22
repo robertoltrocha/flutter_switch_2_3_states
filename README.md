@@ -37,7 +37,7 @@ Example of the list of values:
 
 ##Demo
 
-![exemple](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif?raw=false)
+![Demo](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif)
 
 ## Licence
 MIT
