@@ -7,7 +7,7 @@ Example of the list of values:
 ```
 [false, true]
 [false, null, true]
-[0, 2.1]
+[0, 2,1]
 ['no', '', 'yes']
 ```
 
