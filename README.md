@@ -1,7 +1,8 @@
 # switch 2 or 3 states
 
 An easy way to implement a switch with 2 or 3 states.
-In this package you also have the freedom to configure the list of values that will be used on the switch
+In this package you also have the freedom to configure the list of values that will be used on the switch.<br/>
+
 The list of values is dynamic and returns the selected value without having to do the conversion.
 Example of the list of values:
 ```
@@ -36,7 +37,7 @@ Example of the list of values:
 ```
 
 ##Demo
-
+<br/>
 ![Demo](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif)
 
 ## Licence
