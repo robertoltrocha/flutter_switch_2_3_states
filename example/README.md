@@ -1,6 +1,6 @@
 # switch 2 or 3 states
 An easy way to implement a switch with 2 or 3 states.
-In this package you also have the freedom to configure the list of values that will be used on the switch.<br/>
+In this package you also have the freedom to configure the list of values that will be used on the switch.
 
 The list of values is dynamic and returns the selected value without having to do the conversion.
 Example of the list of values:

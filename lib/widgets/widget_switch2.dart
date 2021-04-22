@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -45,8 +44,8 @@ class WidgetSwitch2 extends StatefulWidget {
   ///switch enable
   late bool enable;
 
-  ///button diameter
-  late double buttonDiameter;
+  ///button size
+  late double buttonSize;
 
   WidgetSwitch2(
       {this.isTreeStates = true,
@@ -58,7 +57,7 @@ class WidgetSwitch2 extends StatefulWidget {
       this.backgroundCenter = const Color(0xFFF0F0F0),
       required this.onChange,
       this.duration = 200,
-      this.buttonDiameter = 25,
+      this.buttonSize = 25,
       this.enable = true,
       this.textLeft = "Off",
       this.textRight = "On",
@@ -104,7 +103,9 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
     textLeft = widget.textLeft;
     textRight = widget.textRight;
 
-    toggleIndex = widget.values.indexOf(widget.initValue) == -1 ? 0 : widget.values.indexOf(widget.initValue);
+    toggleIndex = widget.values.indexOf(widget.initValue) == -1
+        ? 0
+        : widget.values.indexOf(widget.initValue);
     _move(toggleIndex);
   }
 
@@ -118,18 +119,21 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
       opacity: widget.enable ? 1 : widget.disableOpacity,
       child: Stack(children: [
         AnimatedContainer(
-          constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
+          constraints: BoxConstraints(minHeight: widget.buttonSize + 8),
           duration: Duration(milliseconds: widget.duration),
+
           /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
           width: widget.width,
-          decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(20)),
+          decoration: BoxDecoration(
+              color: background, borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, constraints) {
             return ToggleButtons(
                 borderColor: Colors.transparent,
                 selectedColor: Colors.transparent,
                 renderBorder: false,
-                constraints: BoxConstraints.expand(width: constraints.maxWidth / 3),
+                constraints:
+                    BoxConstraints.expand(width: constraints.maxWidth / 3),
                 //number 3 is number of toggle buttons
                 children: [
                   Text(
@@ -152,7 +156,11 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(top: 4, left: rPos, child: iconButton(), duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(
+            top: 4,
+            left: rPos,
+            child: _iconButton(),
+            duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
@@ -163,17 +171,21 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
       child: Stack(children: [
         AnimatedContainer(
           duration: Duration(milliseconds: 500),
+
           /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
-          constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
+          constraints: BoxConstraints(minHeight: widget.buttonSize + 8),
           width: widget.width,
-          decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(20)),
+          decoration: BoxDecoration(
+              color: background, borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, constraints) {
             return ToggleButtons(
                 borderColor: Colors.transparent,
                 selectedColor: Colors.transparent,
                 renderBorder: false,
-                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
+                constraints:
+                    BoxConstraints.expand(width: constraints.maxWidth / 2),
+
                 ///number 2 is number of toggle buttons
                 children: [
                   Text(
@@ -195,20 +207,24 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(top: 4, left: rPos, child: iconButton(), duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(
+            top: 4,
+            left: rPos,
+            child: _iconButton(),
+            duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
 
-  Widget iconButton() {
+  Widget _iconButton() {
     return Material(
         elevation: 2,
         type: MaterialType.button,
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(1000),
         child: Container(
-          height: widget.buttonDiameter,
-          width: widget.buttonDiameter,
+          height: widget.buttonSize,
+          width: widget.buttonSize,
           decoration: BoxDecoration(
             border: Border.all(color: Color(0xF0F0F0), width: 2.0),
             color: widget.colorButton,
@@ -230,7 +246,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
             textLeftColor = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width / 2 - widget.buttonDiameter / 2;
+            rPos = widget.width / 2 - widget.buttonSize / 2;
             background = widget.backgroundCenter;
             textRight = widget.textRight;
             textLeft = widget.textLeft;
@@ -238,7 +254,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
             textLeftColor = Colors.black;
             break;
           case 2:
-            rPos = widget.width - widget.buttonDiameter - padding;
+            rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
             textLeft = widget.textRight;
             textRightColor = Colors.transparent;
@@ -256,7 +272,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
             textLeftColor = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width - widget.buttonDiameter - padding;
+            rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
             textLeft = widget.textRight;
             textRightColor = Colors.transparent;

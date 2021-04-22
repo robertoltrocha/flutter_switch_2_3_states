@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch_2_3_states/flutter_switch_2_3_states.dart';
 
-
-
 void main() {
   runApp(MyApp());
 }
@@ -31,13 +29,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  dynamic value1;
+  dynamic value1 = 1;
   dynamic value2;
   dynamic value3 = 1;
   dynamic value4 = 2;
   dynamic value5;
-  dynamic value6='yes';
-  dynamic value7='yes';
+  dynamic value6 = 'yes';
+  dynamic value7 = 'yes';
+  dynamic value8 = '';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
+              constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.9),
               child: Column(
                 children: [
                   SizedBox(height: 20),
@@ -58,8 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   WidgetSwitch1(
                     initValue: value1,
-                    values: [false, null, true],
                     onChange: (x) {
+                      print(x);
                       setState(() {
                         value1 = x;
                       });
@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     initValue: value2,
                     width: 200,
                     colorButton: Colors.blueGrey,
+
                     ///this is dymamic type list to values user parsed
                     values: [false, null, true],
 
@@ -104,8 +105,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     isTreeStates: false,
                     width: 70,
                     duration: 500,
+
                     ///this is dymamic type list to values user parsed
                     values: [0, 1],
+
                     ///values: [0,1,2],
                     ///values: ['0','1','2'],
                     ///values: [0,2,1],
@@ -202,6 +205,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value5.toString()),
                   SizedBox(height: 20),
                   Text(
+                    'Switch 3 states with text and box button',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  WidgetSwitch3(
+                    initValue: value8,
+                    textLeft: "OFF",
+                    textCenter: "?",
+                    textRight: "ON",
+                    values: ['off', '', 'on'],
+                    onChange: (x) {
+                      print(x);
+                      setState(() {
+                        value8 = x;
+                      });
+                    },
+                  ),
+                  Text('the actual value is ' + value8.toString()),
+                  SizedBox(height: 20),
+                  Text(
                     'Switch 2 states with custom text',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -212,6 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     colorRightBackground: Colors.orange,
                     textLeft: "NO",
                     textRight: "YES",
+
                     ///this is dymamic type list to values user parsed
                     values: ['no', 'yes'],
 

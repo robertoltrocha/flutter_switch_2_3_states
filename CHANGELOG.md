@@ -1,8 +1,17 @@
-## [0.0.4]flutter pub add dart_styleflutter pub add dart_style] 2021-04-22 
+## [0.0.6] 2021-04-22 
+* Dart format
+* Update readme.md
+* Add new widget switch3 
+
+## [0.0.5] 2021-04-22 
 
 * Update documents
 
-## [0.0.3]flutter pub add dart_styleflutter pub add dart_style] 2021-04-21 
+## [0.0.4] 2021-04-22 
+
+* Update documents
+
+## [0.0.3] 2021-04-21 
 
 * Change buttonDiameter => buttonSize
 
