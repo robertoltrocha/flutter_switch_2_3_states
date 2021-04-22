@@ -15,7 +15,7 @@ Example of the list of values:
 ```
    WidgetSwitch1(
                 iconRight: Icons.check,
-                initValue: value2,
+                initValue: true,
                 width: 200,
                 buttonDiameter: 55,
                 iconSize: 60,
@@ -25,10 +25,7 @@ Example of the list of values:
                 ///values: ['0','1','2'],
                 ///values: [0,2,1],
                 onChange: (x) {
-                  print(x);
-                  setState(() {
-                    value2 = x;
-                  });
+                  print(x);                
                 },
               ),
 ```

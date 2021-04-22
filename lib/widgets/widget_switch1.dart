@@ -51,11 +51,10 @@ class WidgetSwitch1 extends StatefulWidget {
   ///switch enable
   late bool enable;
 
-  ///Icon size
-  late double iconSize;
+  ///size button
+  late double buttonSize;
 
-  ///button diameter
-  late double buttonDiameter;
+
 
   WidgetSwitch1(
       {this.colorLeftIcon = Colors.red,
@@ -70,10 +69,10 @@ class WidgetSwitch1 extends StatefulWidget {
       this.backgroundCenter = const Color(0xFFF0F0F0),
       required this.onChange,
       this.duration = 200,
-      this.buttonDiameter = 25,
+
       this.enable = true,
       this.disableOpacity = 0.6,
-      this.iconSize = 20,
+      this.buttonSize = 20,
       this.values = const [0, 1, 2],
       this.initValue = 1});
 
@@ -125,7 +124,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
       child: Stack(children: [
         AnimatedContainer(
           padding: EdgeInsets.zero,
-          constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
+          constraints: BoxConstraints(minHeight: widget.buttonSize + 8),
           duration: Duration(milliseconds: widget.duration),
           /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
@@ -142,7 +141,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                   Icon(
                     widget.iconLeft,
                     color: colorLeftIcon,
-                    size: widget.iconSize,
+                    size: widget.buttonSize,
                   ),
                   Container(
                     padding: EdgeInsets.zero,
@@ -150,7 +149,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                   Icon(
                     widget.iconRight,
                     color: colorRightIcon,
-                    size: widget.iconSize,
+                    size: widget.buttonSize,
                   ),
                 ],
                 onPressed: widget.enable
@@ -176,7 +175,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
           duration: Duration(milliseconds: 500),
           /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
-          constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
+          constraints: BoxConstraints(minHeight: widget.buttonSize + 8),
           width: widget.width,
           decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, constraints) {
@@ -190,12 +189,12 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                   Icon(
                     widget.iconLeft,
                     color: colorLeftIcon,
-                    size: widget.iconSize,
+                    size: widget.buttonSize,
                   ),
                   Icon(
                     widget.iconRight,
                     color: colorRightIcon,
-                    size: widget.iconSize,
+                    size: widget.buttonSize,
                   ),
                 ],
                 onPressed: widget.enable
@@ -220,8 +219,8 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(1000),
         child: Container(
-          height: widget.buttonDiameter,
-          width: widget.buttonDiameter,
+          height: widget.buttonSize,
+          width: widget.buttonSize,
           decoration: BoxDecoration(
             color: widget.colorButton,
             border: Border.all(color: Color(0xF0F0F0), width: 2.0),
@@ -242,13 +241,13 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
             colorLeftIcon = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width / 2 - widget.buttonDiameter / 2;
+            rPos = widget.width / 2 - widget.buttonSize / 2;
             background = widget.backgroundCenter;
             colorRightIcon = widget.colorRightIcon;
             colorLeftIcon = widget.colorLeftIcon;
             break;
           case 2:
-            rPos = widget.width - widget.buttonDiameter - padding;
+            rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
             colorLeftIcon = Colors.transparent;
             colorRightIcon = Colors.transparent;
@@ -264,7 +263,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
             colorLeftIcon = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width - widget.buttonDiameter - padding;
+            rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
             colorLeftIcon = Colors.transparent;
             colorRightIcon = Colors.transparent;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch_2_3_states/flutter_switch_2_3_states.dart';
 
 
+
 void main() {
   runApp(MyApp());
 }
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   dynamic value4 = 2;
   dynamic value5;
   dynamic value6='yes';
+  dynamic value7='yes';
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
-                    iconRight: Icons.check,
+                    buttonSize: 55,
                     initValue: value2,
                     width: 200,
                     colorButton: Colors.blueGrey,
-                    buttonDiameter: 55,
-                    iconSize: 60,
-
                     ///this is dymamic type list to values user parsed
                     values: [false, null, true],
 
@@ -211,9 +210,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 90,
                     initValue: value6,
                     colorRightBackground: Colors.orange,
-                    textLeft: 'NO',
-                    textRight: 'YES',
-
+                    textLeft: "NO",
+                    textRight: "YES",
                     ///this is dymamic type list to values user parsed
                     values: ['no', 'yes'],
 
