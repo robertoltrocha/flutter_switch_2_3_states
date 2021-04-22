@@ -1,7 +1,8 @@
 name: flutter_switch_2_3_states
 description: Widget switch with 2 or 3 states and custom icons, values and text
 version: 0.0.2
-homepage: https://github.com/robertoltrocha
+homepage: https://github.com/robertoltrocha/flutter_switch_2_3_states
+issue_tracker: https://github.com/robertoltrocha/flutter_switch_2_3_states/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
