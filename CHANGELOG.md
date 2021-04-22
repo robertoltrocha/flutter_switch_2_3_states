@@ -1,4 +1,4 @@
-## [0.0.3] 2021-04-21 
+## [0.0.3]flutter pub add dart_styleflutter pub add dart_style] 2021-04-21 
 
 * Change buttonDiameter => buttonSize
 

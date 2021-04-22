@@ -1,16 +1,40 @@
-# example
+# switch 2 or 3 states
+An easy way to implement a switch with 2 or 3 states.
+In this package you also have the freedom to configure the list of values that will be used on the switch.<br/>
 
-A new Flutter application.
+The list of values is dynamic and returns the selected value without having to do the conversion.
+Example of the list of values:
+```
+[false,true]
+[false,null,true]
+[0,2,1]
+['no','','yes']
+```
 
 ## Getting Started
+```
+   WidgetSwitch1(
+                iconRight: Icons.check,
+                initValue: true,
+                width: 200,
+                buttonDiameter: 55,
+                iconSize: 60,
+                ///this is dymamic type list to values user parsed
+                values: [false, null, true],
+                ///values: [0,1,2],
+                ///values: ['0','1','2'],
+                ///values: [0,2,1],
+                onChange: (x) {
+                  print(x);                
+                },
+              ),
+```
 
-This project is a starting point for a Flutter application.
+## Demo
+![Demo](https://github.com/robertoltrocha/flutter_switch_2_3_states/blob/main/images/example1.gif)
 
-A few resources to get you started if this is your first Flutter project:
+## Contributions 
+If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/robertoltrocha/flutter_switch_2_3_states/issues).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Licence
+[MIT](https://pub.dev/packages/flutter_switch_2_3_states/license)
