@@ -127,9 +127,8 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
           padding: EdgeInsets.zero,
           constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
           duration: Duration(milliseconds: widget.duration),
-          // Provide an optional curve to make the animation feel smoother.
+          /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
-          //    height: 30,
           width: widget.width,
           decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(40)),
           child: LayoutBuilder(builder: (context, constraints) {
@@ -138,7 +137,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                 selectedColor: Colors.transparent,
                 renderBorder: false,
                 constraints: BoxConstraints.expand(width: constraints.maxWidth / 3),
-                //number 3 is number of toggle buttons
+                ///number 3 is number of toggle buttons
                 children: [
                   Icon(
                     widget.iconLeft,
@@ -175,7 +174,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
       child: Stack(children: [
         AnimatedContainer(
           duration: Duration(milliseconds: 500),
-          // Provide an optional curve to make the animation feel smoother.
+          /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
           constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
           width: widget.width,
@@ -186,7 +185,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                 selectedColor: Colors.transparent,
                 renderBorder: false,
                 constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
-                //number 3 is number of toggle buttons
+                ///number 2 is number of toggle buttons
                 children: [
                   Icon(
                     widget.iconLeft,
@@ -241,8 +240,7 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
             background = widget.colorLeftBackground;
             colorRightIcon = Colors.transparent;
             colorLeftIcon = Colors.transparent;
-
-            break; // The switch statement must be told to exit, or it will execute every case.
+            break;
           case 1:
             rPos = widget.width / 2 - widget.buttonDiameter / 2;
             background = widget.backgroundCenter;

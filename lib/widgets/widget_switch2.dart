@@ -120,9 +120,8 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
         AnimatedContainer(
           constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
           duration: Duration(milliseconds: widget.duration),
-          // Provide an optional curve to make the animation feel smoother.
+          /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
-          //    height: 30,
           width: widget.width,
           decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, constraints) {
@@ -164,7 +163,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
       child: Stack(children: [
         AnimatedContainer(
           duration: Duration(milliseconds: 500),
-          // Provide an optional curve to make the animation feel smoother.
+          /// Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn,
           constraints: BoxConstraints(minHeight: widget.buttonDiameter + 8),
           width: widget.width,
@@ -175,7 +174,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
                 selectedColor: Colors.transparent,
                 renderBorder: false,
                 constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
-                //number 3 is number of toggle buttons
+                ///number 2 is number of toggle buttons
                 children: [
                   Text(
                     textLeft,
@@ -229,8 +228,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
             textRight = widget.textLeft;
             textRightColor = Colors.white;
             textLeftColor = Colors.transparent;
-
-            break; // The switch statement must be told to exit, or it will execute every case.
+            break;
           case 1:
             rPos = widget.width / 2 - widget.buttonDiameter / 2;
             background = widget.backgroundCenter;
