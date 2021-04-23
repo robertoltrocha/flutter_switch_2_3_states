@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   dynamic value2;
   dynamic value3 = 1;
   dynamic value4 = 2;
-  dynamic value5;
+  dynamic value5=0;
   dynamic value6 = 'yes';
   dynamic value7 = 'yes';
   dynamic value8 = '';
@@ -57,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
-                    initValue: value1,
                     onChange: (x) {
                       print(x);
                       setState(() {
@@ -195,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   WidgetSwitch2(
                     isTreeStates: false,
                     width: 70,
-                    initValue: value4,
+                    initValue: value5,
 
                     ///this is dymamic type list to values user parsed
                     values: [0, 1],
@@ -205,11 +204,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
-                        value4 = x;
+                        value5 = x;
                       });
                     },
                   ),
-                  Text('the actual value is ' + value4.toString()),
+                  Text('the actual value is ' + value5.toString()),
                   SizedBox(height: 20),
                   Text(
                     'Switch 3 states disabled',
@@ -219,9 +218,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     enable: false,
                     initValue: null,
                     values: [false, null, true],
-                    onChange: (x) {},
+                    onChange: (x) {
+                    },
                   ),
-                  Text('the actual value is ' + value5.toString()),
+
                   SizedBox(height: 20),
                   Text(
                     'Switch 2 states with custom text',
