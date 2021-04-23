@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WidgetSwitch3 extends StatefulWidget {
+  ///Key
+  Key? key;
+
   /// return the value on change tap
   final ValueChanged<dynamic> onChange;
 
@@ -51,7 +54,8 @@ class WidgetSwitch3 extends StatefulWidget {
   late double buttonSize;
 
   WidgetSwitch3(
-      {this.isTreeStates = true,
+      {this.key,
+      this.isTreeStates = true,
       this.colorLeftBackground = Colors.red,
       this.disableOpacity = 0.6,
       this.colorRightBackground = Colors.green,
@@ -65,8 +69,19 @@ class WidgetSwitch3 extends StatefulWidget {
       this.textLeft = "Off",
       this.textRight = "On",
       this.textCenter = "?",
-      this.values = const [0, 1, 2],
-      this.initValue = 1});
+      this.values = const [0, 2, 1],
+      this.initValue = 2})
+      : assert((values.length >= 2 && values.length <= 3),
+            'You must provide a list with 2 or 3 values.'),
+        assert(
+            (isTreeStates && values.length == 3 ||
+                !isTreeStates && values.length == 2),
+            'You must provide a widget for 3 states with a list of 3 values.\n'
+            'You must provide a widget for 2 states with a list of 2 values.'),
+        assert(width >= 60),
+        assert(disableOpacity >= 0 && disableOpacity <= 1),
+        assert(duration >= 200 && duration <= 2000),
+        super(key: key);
 
   @override
   _WidgetSwitch3State createState() => _WidgetSwitch3State();
@@ -155,7 +170,14 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  Container(),
+                  Container(
+                    child: Text(
+                      widget.textCenter,
+                      style: TextStyle(color: textCenterColor),
+                      textAlign: TextAlign.center,
+                    ),
+                    padding: EdgeInsets.zero,
+                  ),
                   Container(
                     child: Text(
                       textRight,
@@ -215,13 +237,10 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  Container(
-                    child: Text(
-                      textRight,
-                      style: TextStyle(color: textRightColor),
-                      textAlign: TextAlign.center,
-                    ),
-                    padding: EdgeInsets.zero,
+                  Text(
+                    textRight,
+                    style: TextStyle(color: textRightColor),
+                    textAlign: TextAlign.center,
                   ),
                 ],
                 onPressed: widget.enable
@@ -287,6 +306,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
             textRightColor = Colors.black;
             textLeftColor = Colors.white;
             textButton = widget.textLeft;
+
             textButtonColorActive = Colors.white;
             break;
           case 1:
@@ -302,6 +322,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
           case 2:
             rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
+
             textRightColor = Colors.white;
             textLeftColor = Colors.black;
             textButton = widget.textRight;

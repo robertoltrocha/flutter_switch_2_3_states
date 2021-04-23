@@ -1,6 +1,6 @@
 name: flutter_switch_2_3_states
 description: Widget switch with 2 or 3 states and custom icons, values and text.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/robertoltrocha/flutter_switch_2_3_states
 issue_tracker: https://github.com/robertoltrocha/flutter_switch_2_3_states/issues
 
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  dart_style: ^2.0.0
+
 
 
 dev_dependencies:

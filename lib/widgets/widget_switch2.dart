@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class WidgetSwitch2 extends StatefulWidget {
+  ///Key
+  Key? key;
+
   /// return the value on change tap
   final ValueChanged<dynamic> onChange;
 
@@ -48,7 +51,8 @@ class WidgetSwitch2 extends StatefulWidget {
   late double buttonSize;
 
   WidgetSwitch2(
-      {this.isTreeStates = true,
+      {this.key,
+      this.isTreeStates = true,
       this.colorLeftBackground = Colors.red,
       this.disableOpacity = 0.6,
       this.colorRightBackground = Colors.green,
@@ -61,28 +65,39 @@ class WidgetSwitch2 extends StatefulWidget {
       this.enable = true,
       this.textLeft = "Off",
       this.textRight = "On",
-      this.values = const [0, 1, 2],
-      this.initValue = 1});
+      this.values = const [0, 2, 1],
+      this.initValue = 2})
+      : assert((values.length >= 2 && values.length <= 3),
+            'You must provide a list with 2 or 3 values.'),
+        assert(
+            (isTreeStates && values.length == 3 ||
+                !isTreeStates && values.length == 2),
+            'You must provide a widget for 3 states with a list of 3 values.\n'
+            'You must provide a widget for 2 states with a list of 2 values.'),
+        assert(width >= 60),
+        assert(disableOpacity >= 0 && disableOpacity <= 1),
+        assert(duration >= 200 && duration <= 2000),
+        super(key: key);
 
   @override
   _WidgetSwitch2State createState() => _WidgetSwitch2State();
 }
 
 class _WidgetSwitch2State extends State<WidgetSwitch2> {
-  late Color colorRightBackground;
-  late Color colorLeftBackground;
-  late Color backgroundDefault;
-  late String textRight;
-  late String textLeft;
+  ///value text right
+  late String _textRight;
+
+  ///value text left
+  late String _textLeft;
 
   ///the result actual select state value
-  int toggleIndex = 1;
+  int _toggleIndex = 1;
 
   ///Set all state to false, not used active states
   late List<bool> _selections;
 
   ///padding left and right side of button
-  double rPos = 0;
+  double _rPos = 0;
 
   ///padding left and right side of button
   double padding = 4;
@@ -90,8 +105,10 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
   ///  Color ColorCenter = Colors.grey;
   Color background = Colors.grey;
 
-  ///Text color / left and right
+  ///Text color right
   Color textRightColor = Colors.black;
+
+  ///Text color left
   Color textLeftColor = Colors.black;
 
   @override
@@ -100,13 +117,13 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
     if (widget.isTreeStates) _selections = List.generate(3, (_) => false);
     if (!widget.isTreeStates) _selections = List.generate(2, (_) => false);
 
-    textLeft = widget.textLeft;
-    textRight = widget.textRight;
+    _textLeft = widget.textLeft;
+    _textRight = widget.textRight;
 
-    toggleIndex = widget.values.indexOf(widget.initValue) == -1
+    _toggleIndex = widget.values.indexOf(widget.initValue) == -1
         ? 0
         : widget.values.indexOf(widget.initValue);
-    _move(toggleIndex);
+    _move(_toggleIndex);
   }
 
   @override
@@ -114,6 +131,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
     return widget.isTreeStates ? _switch3Pos() : _switch2Pos();
   }
 
+  ///build switch with 3 states
   Widget _switch3Pos() {
     return Opacity(
       opacity: widget.enable ? 1 : widget.disableOpacity,
@@ -137,12 +155,12 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
                 //number 3 is number of toggle buttons
                 children: [
                   Text(
-                    textLeft,
+                    _textLeft,
                     style: TextStyle(color: textLeftColor),
                   ),
                   Container(),
                   Text(
-                    textRight,
+                    _textRight,
                     style: TextStyle(color: textRightColor),
                   ),
                 ],
@@ -158,13 +176,14 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
         ),
         AnimatedPositioned(
             top: 4,
-            left: rPos,
+            left: _rPos,
             child: _iconButton(),
             duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
 
+  ///build switch with 2 states
   Widget _switch2Pos() {
     return Opacity(
       opacity: widget.enable ? 1 : widget.disableOpacity,
@@ -189,11 +208,11 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
                 ///number 2 is number of toggle buttons
                 children: [
                   Text(
-                    textLeft,
+                    _textLeft,
                     style: TextStyle(color: textLeftColor),
                   ),
                   Text(
-                    textRight,
+                    _textRight,
                     style: TextStyle(color: textRightColor),
                   ),
                 ],
@@ -209,13 +228,14 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
         ),
         AnimatedPositioned(
             top: 4,
-            left: rPos,
+            left: _rPos,
             child: _iconButton(),
             duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
 
+  ///build button
   Widget _iconButton() {
     return Material(
         elevation: 2,
@@ -233,48 +253,49 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
         ));
   }
 
+  ///move button
   void _move(int index) {
-    toggleIndex = index;
+    _toggleIndex = index;
     setState(() {
       if (!(!widget.isTreeStates && index == 1)) {
-        switch (toggleIndex) {
+        switch (_toggleIndex) {
           case 0:
-            rPos = padding;
+            _rPos = padding;
             background = widget.colorLeftBackground;
-            textRight = widget.textLeft;
+            _textRight = widget.textLeft;
             textRightColor = Colors.white;
             textLeftColor = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width / 2 - widget.buttonSize / 2;
+            _rPos = widget.width / 2 - widget.buttonSize / 2;
             background = widget.backgroundCenter;
-            textRight = widget.textRight;
-            textLeft = widget.textLeft;
+            _textRight = widget.textRight;
+            _textLeft = widget.textLeft;
             textRightColor = Colors.black;
             textLeftColor = Colors.black;
             break;
           case 2:
-            rPos = widget.width - widget.buttonSize - padding;
+            _rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
-            textLeft = widget.textRight;
+            _textLeft = widget.textRight;
             textRightColor = Colors.transparent;
             textLeftColor = Colors.white;
             break;
           default:
         }
       } else {
-        switch (toggleIndex) {
+        switch (_toggleIndex) {
           case 0:
-            rPos = padding;
+            _rPos = padding;
             background = widget.colorLeftBackground;
-            textRight = widget.textLeft;
+            _textRight = widget.textLeft;
             textRightColor = Colors.white;
             textLeftColor = Colors.transparent;
             break;
           case 1:
-            rPos = widget.width - widget.buttonSize - padding;
+            _rPos = widget.width - widget.buttonSize - padding;
             background = widget.colorRightBackground;
-            textLeft = widget.textRight;
+            _textLeft = widget.textRight;
             textRightColor = Colors.transparent;
             textLeftColor = Colors.white;
             break;
@@ -284,8 +305,9 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
     });
   }
 
+  ///return value on change
   void _changeSelect(int index) {
     _move(index);
-    widget.onChange(widget.values[toggleIndex]);
+    widget.onChange(widget.values[_toggleIndex]);
   }
 }

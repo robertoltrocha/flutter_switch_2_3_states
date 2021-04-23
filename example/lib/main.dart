@@ -68,6 +68,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value1.toString()),
                   SizedBox(height: 20),
                   Text(
+                    'Switch 3 states with text and box button',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  WidgetSwitch3(
+                    initValue: value8,
+                    textLeft: "NO",
+                    textCenter: "?",
+                    textRight: "YES",
+                    values: ['no', '', 'yes'],
+                    onChange: (x) {
+                      print(x);
+                      setState(() {
+                        value8 = x;
+                      });
+                    },
+                  ),
+                  Text('the actual value is ' + value8.toString()),
+                  SizedBox(height: 20),
+                  Text(
                     'Switch 3 states and change the size and color of the button',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -179,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     initValue: value4,
 
                     ///this is dymamic type list to values user parsed
-                    values: [0, 2, 1],
+                    values: [0, 1],
 
                     ///values: [0,1,2],
                     ///values: ['0','1','2'],
@@ -203,25 +222,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onChange: (x) {},
                   ),
                   Text('the actual value is ' + value5.toString()),
-                  SizedBox(height: 20),
-                  Text(
-                    'Switch 3 states with text and box button',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  WidgetSwitch3(
-                    initValue: value8,
-                    textLeft: "OFF",
-                    textCenter: "?",
-                    textRight: "ON",
-                    values: ['off', '', 'on'],
-                    onChange: (x) {
-                      print(x);
-                      setState(() {
-                        value8 = x;
-                      });
-                    },
-                  ),
-                  Text('the actual value is ' + value8.toString()),
                   SizedBox(height: 20),
                   Text(
                     'Switch 2 states with custom text',

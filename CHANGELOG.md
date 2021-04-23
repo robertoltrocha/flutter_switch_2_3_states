@@ -1,3 +1,9 @@
+## [0.0.7] 2021-04-23 
+* Bug: WidgetSwitch3 - center text is disappearing when button move to left and right
+* Changed default list [0, 1, 2] to [0, 2, 1]
+* Added asserts into the classes
+* Removed dart_style dependency
+
 ## [0.0.6] 2021-04-22 
 * Dart format
 * Update readme.md
