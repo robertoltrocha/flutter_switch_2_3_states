@@ -47,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
+              constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.9),
               child: Column(
                 children: [
                   SizedBox(height: 20),
@@ -227,7 +228,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   Text('the actual value is ' + value6.toString()),
-
                   SizedBox(height: 20),
                 ],
               ),

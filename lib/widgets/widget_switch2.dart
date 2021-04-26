@@ -49,7 +49,7 @@ class WidgetSwitch2 extends StatefulWidget {
 
   WidgetSwitch2(
       {this.key,
-         this.colorLeftBackground = Colors.red,
+      this.colorLeftBackground = Colors.red,
       this.disableOpacity = 0.6,
       this.colorRightBackground = Colors.green,
       this.colorButton = const Color(0xffF0F0F0),
@@ -118,7 +118,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.values.length==3 ? _switch3Pos() : _switch2Pos();
+    return widget.values.length == 3 ? _switch3Pos() : _switch2Pos();
   }
 
   ///build switch with 3 states
@@ -247,7 +247,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
   void _move(int index) {
     _toggleIndex = index;
     setState(() {
-      if (widget.values.length==3) {
+      if (widget.values.length == 3) {
         switch (_toggleIndex) {
           case 0:
             _rPos = padding;

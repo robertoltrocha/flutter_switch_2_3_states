@@ -67,7 +67,8 @@ class WidgetSwitch3 extends StatefulWidget {
       this.textCenter = "?",
       this.values = const [0, 2, 1],
       this.initValue = 2})
-      : assert((values.length >= 2 && values.length <= 3), 'You must provide a list with 2 or 3 values.'),
+      : assert((values.length >= 2 && values.length <= 3),
+            'You must provide a list with 2 or 3 values.'),
         assert(width >= 60),
         assert(disableOpacity >= 0 && disableOpacity <= 1),
         assert(duration >= 200 && duration <= 2000),
@@ -117,7 +118,9 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
     textLeft = widget.textLeft;
     textRight = widget.textRight;
 
-    toggleIndex = widget.values.indexOf(widget.initValue) == -1 ? 0 : widget.values.indexOf(widget.initValue);
+    toggleIndex = widget.values.indexOf(widget.initValue) == -1
+        ? 0
+        : widget.values.indexOf(widget.initValue);
     _move(toggleIndex);
   }
 
@@ -147,7 +150,8 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 renderBorder: false,
 
                 ///number 3 is number of toggle buttons
-                constraints: BoxConstraints.expand(width: constraints.maxWidth / 3),
+                constraints:
+                    BoxConstraints.expand(width: constraints.maxWidth / 3),
                 children: [
                   Text(
                     textLeft,
@@ -183,7 +187,11 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(top: 4, left: rPos, child: _iconButton(), duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(
+            top: 4,
+            left: rPos,
+            child: _iconButton(),
+            duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
@@ -209,7 +217,8 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 renderBorder: false,
 
                 ///number 3 is number of toggle buttons
-                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
+                constraints:
+                    BoxConstraints.expand(width: constraints.maxWidth / 2),
                 children: [
                   Text(
                     textLeft,
@@ -234,7 +243,11 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(top: 4, left: rPos, child: _iconButton(), duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(
+            top: 4,
+            left: rPos,
+            child: _iconButton(),
+            duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
@@ -246,14 +259,20 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
     return Container(
       height: widget.buttonSize,
       width: widget.buttonSize,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(bevel), color: background, boxShadow: [
-        BoxShadow(
-          blurRadius: bevel,
-          offset: -blurOffset,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(bevel),
           color: background,
-        ),
-        BoxShadow(blurRadius: bevel, offset: blurOffset, color: Colors.grey.shade400)
-      ]
+          boxShadow: [
+            BoxShadow(
+              blurRadius: bevel,
+              offset: -blurOffset,
+              color: background,
+            ),
+            BoxShadow(
+                blurRadius: bevel,
+                offset: blurOffset,
+                color: Colors.grey.shade400)
+          ]
 
           // borderRadius: BorderRadius.circular(12.0),
           ),

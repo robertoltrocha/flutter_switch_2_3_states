@@ -59,25 +59,25 @@ class WidgetSwitch1 extends StatefulWidget {
 
   WidgetSwitch1(
       {this.key,
-        this.colorLeftIcon = Colors.red,
-        this.colorLeftBackground = Colors.red,
-        this.iconLeft = Icons.close,
-        this.colorRightIcon = Colors.green,
-        this.colorRightBackground = Colors.green,
-        this.iconRight = Icons.check,
-        this.colorButton = const Color(0xffF0F0F0),
-
-        this.width = 100,
-        this.backgroundCenter = const Color(0xFFF0F0F0),
-        required this.onChange,
-        this.duration = 200,
-        this.enable = true,
-        this.disableOpacity = 0.6,
-        this.buttonSize = 20,
-        this.values = const [0, 2, 1],
-        this.height,
-        this.initValue = 2})
-      : assert((values.length >= 2 && values.length <= 3), 'You must provide a list with 2 or 3 values.'),
+      this.colorLeftIcon = Colors.red,
+      this.colorLeftBackground = Colors.red,
+      this.iconLeft = Icons.close,
+      this.colorRightIcon = Colors.green,
+      this.colorRightBackground = Colors.green,
+      this.iconRight = Icons.check,
+      this.colorButton = const Color(0xffF0F0F0),
+      this.width = 100,
+      this.backgroundCenter = const Color(0xFFF0F0F0),
+      required this.onChange,
+      this.duration = 200,
+      this.enable = true,
+      this.disableOpacity = 0.6,
+      this.buttonSize = 20,
+      this.values = const [0, 2, 1],
+      this.height,
+      this.initValue = 2})
+      : assert((values.length >= 2 && values.length <= 3),
+            'You must provide a list with 2 or 3 values.'),
         assert(width >= 60),
         assert(disableOpacity >= 0 && disableOpacity <= 1),
         assert(duration >= 200 && duration <= 2000),
@@ -110,16 +110,20 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
   Color _background = Colors.grey;
 
   /// widget switch height
-  double _height =0;
+  double _height = 0;
 
   @override
   void initState() {
     super.initState();
-    widget.height == null  ? _height = widget.buttonSize+8 : _height = widget.height!;
+    widget.height == null
+        ? _height = widget.buttonSize + 8
+        : _height = widget.height!;
     _selections = List.generate(widget.values.length, (_) => false);
     _colorRightIcon = widget.colorRightIcon;
     _colorLeftIcon = widget.colorLeftIcon;
-    _toggleIndex = widget.values.indexOf(widget.initValue) == -1 ? 0 : widget.values.indexOf(widget.initValue);
+    _toggleIndex = widget.values.indexOf(widget.initValue) == -1
+        ? 0
+        : widget.values.indexOf(widget.initValue);
     _move(_toggleIndex);
   }
 
@@ -135,11 +139,13 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
       child: Stack(alignment: Alignment.center, children: [
         Container(
           width: widget.width,
-          height: widget.buttonSize > _height ? widget.buttonSize : widget.height,
+          height:
+              widget.buttonSize > _height ? widget.buttonSize : widget.height,
         ),
         Container(
           width: widget.width,
-          decoration: BoxDecoration(color: _background, borderRadius: BorderRadius.circular(40)),
+          decoration: BoxDecoration(
+              color: _background, borderRadius: BorderRadius.circular(40)),
           constraints: BoxConstraints(maxHeight: _height),
         ),
         AnimatedContainer(
@@ -152,7 +158,9 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
           width: widget.width,
           height: widget.buttonSize,
 
-          decoration: BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.circular(40)),
+          decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(40)),
           child: ToggleButtons(
               borderColor: Colors.transparent,
               selectedColor: Colors.transparent,
@@ -177,15 +185,17 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
               ],
               onPressed: widget.enable
                   ? (int index) {
-                _changeSelect(index);
-              }
+                      _changeSelect(index);
+                    }
                   : null,
               borderRadius: BorderRadius.circular(20),
               borderWidth: 3,
               isSelected: _selections),
         ),
         AnimatedPositioned(
-            top: widget.buttonSize < _height? (_height - widget.buttonSize) / 2 : 0,
+            top: widget.buttonSize < _height
+                ? (_height - widget.buttonSize) / 2
+                : 0,
             left: _rPos,
             child: _iconButton(),
             duration: Duration(milliseconds: widget.duration)),
@@ -205,13 +215,15 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
           curve: Curves.fastOutSlowIn,
           constraints: BoxConstraints(minHeight: widget.buttonSize + 8),
           width: widget.width,
-          decoration: BoxDecoration(color: _background, borderRadius: BorderRadius.circular(20)),
+          decoration: BoxDecoration(
+              color: _background, borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, constraints) {
             return ToggleButtons(
                 borderColor: Colors.transparent,
                 selectedColor: Colors.transparent,
                 renderBorder: false,
-                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
+                constraints:
+                    BoxConstraints.expand(width: constraints.maxWidth / 2),
 
                 ///number 2 is number of toggle buttons
                 children: [
@@ -228,15 +240,19 @@ class _WidgetSwitch1State extends State<WidgetSwitch1> {
                 ],
                 onPressed: widget.enable
                     ? (int index) {
-                  _changeSelect(index);
-                }
+                        _changeSelect(index);
+                      }
                     : null,
                 borderRadius: BorderRadius.circular(20),
                 borderWidth: 3,
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(top: 4, left: _rPos, child: _iconButton(), duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(
+            top: 4,
+            left: _rPos,
+            child: _iconButton(),
+            duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
