@@ -23,7 +23,7 @@ class WidgetSwitch2 extends StatefulWidget {
   ///Set disable opacity
   late double disableOpacity;
 
-  /// Background off state
+  /// color button
   final Color colorButton;
 
   /// width switch
@@ -32,13 +32,10 @@ class WidgetSwitch2 extends StatefulWidget {
   /// Background center state
   late Color backgroundCenter;
 
-  /// set if is tree or two state, true is 3 states;
-  late bool isTreeStates;
-
   /// Init value/default
   late dynamic initValue;
 
-  ///List of values to 3 states
+  /// List of values to 2 or 3 states
   final List<dynamic> values;
 
   ///set duration transition between states
@@ -52,8 +49,7 @@ class WidgetSwitch2 extends StatefulWidget {
 
   WidgetSwitch2(
       {this.key,
-      this.isTreeStates = true,
-      this.colorLeftBackground = Colors.red,
+         this.colorLeftBackground = Colors.red,
       this.disableOpacity = 0.6,
       this.colorRightBackground = Colors.green,
       this.colorButton = const Color(0xffF0F0F0),
@@ -69,11 +65,6 @@ class WidgetSwitch2 extends StatefulWidget {
       this.initValue = 2})
       : assert((values.length >= 2 && values.length <= 3),
             'You must provide a list with 2 or 3 values.'),
-        assert(
-            (isTreeStates && values.length == 3 ||
-                !isTreeStates && values.length == 2),
-            'You must provide a widget for 3 states with a list of 3 values.\n'
-            'You must provide a widget for 2 states with a list of 2 values.'),
         assert(width >= 60),
         assert(disableOpacity >= 0 && disableOpacity <= 1),
         assert(duration >= 200 && duration <= 2000),
@@ -114,8 +105,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
   @override
   void initState() {
     super.initState();
-    if (widget.isTreeStates) _selections = List.generate(3, (_) => false);
-    if (!widget.isTreeStates) _selections = List.generate(2, (_) => false);
+    _selections = List.generate(widget.values.length, (_) => false);
 
     _textLeft = widget.textLeft;
     _textRight = widget.textRight;
@@ -128,7 +118,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.isTreeStates ? _switch3Pos() : _switch2Pos();
+    return widget.values.length==3 ? _switch3Pos() : _switch2Pos();
   }
 
   ///build switch with 3 states
@@ -257,7 +247,7 @@ class _WidgetSwitch2State extends State<WidgetSwitch2> {
   void _move(int index) {
     _toggleIndex = index;
     setState(() {
-      if (!(!widget.isTreeStates && index == 1)) {
+      if (widget.values.length==3) {
         switch (_toggleIndex) {
           case 0:
             _rPos = padding;

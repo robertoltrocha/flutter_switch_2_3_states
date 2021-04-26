@@ -26,7 +26,7 @@ class WidgetSwitch3 extends StatefulWidget {
   ///Set disable opacity
   late double disableOpacity;
 
-  /// Background off state
+  /// color button
   final Color colorButton;
 
   /// width switch
@@ -35,13 +35,10 @@ class WidgetSwitch3 extends StatefulWidget {
   /// Background center state
   late Color backgroundCenter;
 
-  /// set if is tree or two state, true is 3 states;
-  late bool isTreeStates;
-
   /// Init value/default
   late dynamic initValue;
 
-  ///List of values to 3 states
+  ///List of values to 2 or 3 states
   final List<dynamic> values;
 
   ///set duration transition between states
@@ -55,7 +52,6 @@ class WidgetSwitch3 extends StatefulWidget {
 
   WidgetSwitch3(
       {this.key,
-      this.isTreeStates = true,
       this.colorLeftBackground = Colors.red,
       this.disableOpacity = 0.6,
       this.colorRightBackground = Colors.green,
@@ -71,13 +67,7 @@ class WidgetSwitch3 extends StatefulWidget {
       this.textCenter = "?",
       this.values = const [0, 2, 1],
       this.initValue = 2})
-      : assert((values.length >= 2 && values.length <= 3),
-            'You must provide a list with 2 or 3 values.'),
-        assert(
-            (isTreeStates && values.length == 3 ||
-                !isTreeStates && values.length == 2),
-            'You must provide a widget for 3 states with a list of 3 values.\n'
-            'You must provide a widget for 2 states with a list of 2 values.'),
+      : assert((values.length >= 2 && values.length <= 3), 'You must provide a list with 2 or 3 values.'),
         assert(width >= 60),
         assert(disableOpacity >= 0 && disableOpacity <= 1),
         assert(duration >= 200 && duration <= 2000),
@@ -122,21 +112,18 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
   @override
   void initState() {
     super.initState();
-    if (widget.isTreeStates) _selections = List.generate(3, (_) => false);
-    if (!widget.isTreeStates) _selections = List.generate(2, (_) => false);
+    _selections = List.generate(widget.values.length, (_) => false);
 
     textLeft = widget.textLeft;
     textRight = widget.textRight;
 
-    toggleIndex = widget.values.indexOf(widget.initValue) == -1
-        ? 0
-        : widget.values.indexOf(widget.initValue);
+    toggleIndex = widget.values.indexOf(widget.initValue) == -1 ? 0 : widget.values.indexOf(widget.initValue);
     _move(toggleIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.isTreeStates ? _switch3Pos() : _switch2Pos();
+    return widget.values.length == 3 ? _switch3Pos() : _switch2Pos();
   }
 
   Widget _switch3Pos() {
@@ -160,8 +147,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 renderBorder: false,
 
                 ///number 3 is number of toggle buttons
-                constraints:
-                    BoxConstraints.expand(width: constraints.maxWidth / 3),
+                constraints: BoxConstraints.expand(width: constraints.maxWidth / 3),
                 children: [
                   Text(
                     textLeft,
@@ -197,11 +183,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(
-            top: 4,
-            left: rPos,
-            child: _iconButton(),
-            duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(top: 4, left: rPos, child: _iconButton(), duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
@@ -227,8 +209,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 renderBorder: false,
 
                 ///number 3 is number of toggle buttons
-                constraints:
-                    BoxConstraints.expand(width: constraints.maxWidth / 2),
+                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2),
                 children: [
                   Text(
                     textLeft,
@@ -253,11 +234,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
                 isSelected: _selections);
           }),
         ),
-        AnimatedPositioned(
-            top: 4,
-            left: rPos,
-            child: _iconButton(),
-            duration: Duration(milliseconds: widget.duration)),
+        AnimatedPositioned(top: 4, left: rPos, child: _iconButton(), duration: Duration(milliseconds: widget.duration)),
       ]),
     );
   }
@@ -269,20 +246,14 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
     return Container(
       height: widget.buttonSize,
       width: widget.buttonSize,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(bevel),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(bevel), color: background, boxShadow: [
+        BoxShadow(
+          blurRadius: bevel,
+          offset: -blurOffset,
           color: background,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: bevel,
-              offset: -blurOffset,
-              color: background,
-            ),
-            BoxShadow(
-                blurRadius: bevel,
-                offset: blurOffset,
-                color: Colors.grey.shade400)
-          ]
+        ),
+        BoxShadow(blurRadius: bevel, offset: blurOffset, color: Colors.grey.shade400)
+      ]
 
           // borderRadius: BorderRadius.circular(12.0),
           ),
@@ -298,7 +269,7 @@ class _WidgetSwitch3State extends State<WidgetSwitch3> {
   void _move(int index) {
     toggleIndex = index;
     setState(() {
-      if (!(!widget.isTreeStates && index == 1)) {
+      if (widget.values.length == 3) {
         switch (toggleIndex) {
           case 0:
             rPos = padding;

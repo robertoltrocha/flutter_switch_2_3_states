@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   dynamic value2;
   dynamic value3 = 1;
   dynamic value4 = 2;
-  dynamic value5=0;
+  dynamic value5 = 0;
   dynamic value6 = 'yes';
   dynamic value7 = 'yes';
   dynamic value8 = '';
@@ -47,13 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width * 0.9),
+              constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
               child: Column(
                 children: [
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states default',
+                    'Ex.1 Switch 3 states default',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
@@ -67,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value1.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states with text and box button',
+                    'Ex.2 Switch 3 states with text and box button',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch3(
@@ -86,7 +85,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value8.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states and change the size and color of the button',
+                    'Ex.3 Switch 3 states button size greater than switch height',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  WidgetSwitch1(
+                    initValue: 0,
+                    iconLeft: null,
+                    iconRight: null,
+                    height: 10,
+                    buttonSize: 30,
+                    onChange: (x) {
+                      print(x);
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Ex.4 Switch 3 states and change the size and color of the button',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
@@ -111,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value2.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 2 states',
+                    'Ex.5 Switch 2 states',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
@@ -120,16 +134,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     iconLeft: Icons.remove_circle,
                     iconRight: Icons.play_arrow,
                     initValue: value3,
-                    isTreeStates: false,
                     width: 70,
                     duration: 500,
-
-                    ///this is dymamic type list to values user parsed
                     values: [0, 1],
-
-                    ///values: [0,1,2],
-                    ///values: ['0','1','2'],
-                    ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
                         value3 = x;
@@ -139,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value3.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states and change duration time',
+                    'Ex.6 Switch 3 states and change duration time',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
@@ -149,13 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     iconRight: Icons.play_arrow,
                     initValue: value4,
                     duration: 1000,
-
-                    ///this is dymamic type list to values user parsed
                     values: [0, 2, 1],
-
-                    ///values: [0,1,2],
-                    ///values: ['0','1','2'],
-                    ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
                         value4 = x;
@@ -165,20 +166,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value4.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states with text',
+                    'Ex.7 Switch 3 states with text',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch2(
                     colorRightBackground: Colors.blue,
                     colorLeftBackground: Colors.orange,
                     initValue: value4,
-
-                    ///this is dymamic type list to values user parsed
                     values: [0, 2, 1],
-
-                    ///values: [0,1,2],
-                    ///values: ['0','1','2'],
-                    ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
                         value4 = x;
@@ -188,20 +183,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value4.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 2 states with text',
+                    'Ex.8 Switch 2 states with text',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch2(
-                    isTreeStates: false,
                     width: 70,
                     initValue: value5,
-
-                    ///this is dymamic type list to values user parsed
                     values: [0, 1],
-
-                    ///values: [0,1,2],
-                    ///values: ['0','1','2'],
-                    ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
                         value5 = x;
@@ -211,36 +199,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('the actual value is ' + value5.toString()),
                   SizedBox(height: 20),
                   Text(
-                    'Switch 3 states disabled',
+                    'Ex.9 Switch 3 states disabled',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch1(
                     enable: false,
                     initValue: null,
                     values: [false, null, true],
-                    onChange: (x) {
-                    },
+                    onChange: (x) {},
                   ),
-
                   SizedBox(height: 20),
                   Text(
-                    'Switch 2 states with custom text',
+                    'Ex.10 Switch 2 states with custom text',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   WidgetSwitch2(
-                    isTreeStates: false,
                     width: 90,
                     initValue: value6,
                     colorRightBackground: Colors.orange,
                     textLeft: "NO",
                     textRight: "YES",
-
-                    ///this is dymamic type list to values user parsed
                     values: ['no', 'yes'],
-
-                    ///values: [0,1,2],
-                    ///values: ['0','1','2'],
-                    ///values: [0,2,1],
                     onChange: (x) {
                       setState(() {
                         value6 = x;
@@ -248,6 +227,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                   Text('the actual value is ' + value6.toString()),
+
+                  SizedBox(height: 20),
                 ],
               ),
             ),
