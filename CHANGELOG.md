@@ -1,3 +1,6 @@
+## [0.0.9] 2021-06-06 
+* Update dependecy cupertino_icons to 1.0.3
+
 ## [0.0.8] 2021-04-26 
 | Note: This release has breaking changes.
 * BREAKING: isThreeStates has been removed. Now, to set the switch with two states, parse the list with two values, example: values = [false, true]
